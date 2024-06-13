@@ -1,0 +1,35 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400,600&family=Roboto:wght@400;500,700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background-secondary: 180 5% 96%;
+    --background: 0 0% 100%;
+    --foreground: 192 23% 9%;
+    --primary: 188 72% 35%;
+    --secondary: 31 78% 50%;
+    --muted-foreground: 0 0% 46%;
+  }
+}
+
+@layer base {
+  body {
+    @apply bg-background-secondary text-[0.875rem] text-foreground;
+    font-family: "Open Sans", sans-serif;
+  }
+}
+
+.heading-1 {
+  @apply text-[1.375rem] font-semibold;
+}
+
+.heading-2 {
+  @apply text-[1.125rem] font-bold leading-[1.36];
+}
+
+.heading-3 {
+  @apply text-[1rem] font-bold leading-[1.36];
+}
