@@ -1,16 +1,19 @@
 import { Button, DialogClose } from "@/shared/components/ui";
 import { Device } from "@/shared/types/Device";
-import ConfirmOrderDialog from "./ConfirmOrderDialog";
 import closeIcon from "@/assets/close.svg";
 
+type Props = Omit<Device, "id"> & {
+  setOrderView: () => void;
+};
+
 const DeviceDescription = ({
-  id,
   description,
   image,
   title,
   subsciptionPrice,
   copayment,
-}: Device) => {
+  setOrderView
+}: Props) => {
   return (
     <div>
       <div className="mb-[26px] grid grid-cols-3 items-center">
@@ -47,13 +50,9 @@ const DeviceDescription = ({
       <Button className="mb-4 w-full" variant="secondary">
         Change Address
       </Button>
-      <ConfirmOrderDialog
-        copayment={copayment}
-        subsciptionPrice={subsciptionPrice}
-        image={image}
-        title={title}
-        id={id}
-      />
+      <Button onClick={setOrderView} className="w-full">
+        Order device
+      </Button>
     </div>
   );
 };

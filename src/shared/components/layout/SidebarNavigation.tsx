@@ -12,7 +12,7 @@ const SidebarNavigation = () => {
               to={href}
               className={({ isActive }) =>
                 cn(
-                  "flex items-end gap-4 px-[1.125rem] py-3 text-[1.125rem] font-semibold text-muted-foreground",
+                  "flex items-end gap-4 px-[1.125rem] py-3 text-[1.125rem] font-semibold text-muted-foreground transition-colors",
                   isActive && "bg-primary text-white",
                 )
               }

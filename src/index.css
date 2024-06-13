@@ -10,7 +10,11 @@
     --background: 0 0% 100%;
     --foreground: 192 23% 9%;
     --primary: 188 72% 35%;
+    --primary-hover: 186 70% 32%;
+    --primary-active: 186 80% 27%;
     --secondary: 31 78% 50%;
+    --secondary-hover: 31 74% 48%;
+    --secondary-active: 31 85% 46%;
     --muted-foreground: 0 0% 46%;
   }
 }

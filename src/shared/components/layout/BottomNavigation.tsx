@@ -1,5 +1,6 @@
 import { NavLink } from "react-router-dom";
 import { navigationsItems } from "@/shared/const";
+import { cn } from "@/shared/utils";
 
 const BottomNavigation = () => {
   return (
@@ -12,15 +13,16 @@ const BottomNavigation = () => {
                 <NavLink
                   to={href}
                   className={({ isActive }) =>
-                    isActive
-                      ? "font-bold text-primary"
-                      : "font-medium text-muted-foreground"
+                    cn(
+                      "flex flex-col items-center gap-2 transition-colors",
+                      isActive
+                        ? "font-bold text-primary"
+                        : "font-medium text-muted-foreground",
+                    )
                   }
                 >
-                  <button className="flex flex-col items-center gap-2">
-                    <Icon />
-                    <span className="text-[10px] leading-[1.17]">{label}</span>
-                  </button>
+                  <Icon />
+                  <span className="text-[10px] leading-[1.17]">{label}</span>
                 </NavLink>
               </li>
             );

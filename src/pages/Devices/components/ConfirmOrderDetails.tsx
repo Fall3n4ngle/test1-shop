@@ -1,38 +1,31 @@
 import { Device } from "@/shared/types/Device";
 import ConfirmOrderButton from "./ConfirmOrderButton";
-import { DialogClose } from "@/shared/components/ui";
+import { Button, DialogClose } from "@/shared/components/ui";
 import closeIcon from "@/assets/close.svg";
 import arrowLeftIcon from "@/assets/arrow-left.svg";
-import { useSearchParams } from "react-router-dom";
 
 type Props = Pick<
   Device,
   "title" | "copayment" | "subsciptionPrice" | "id" | "image"
->;
+> & {
+  setDescriptionView: () => void;
+};
 
 const ConfirmOrderDetails = ({
   title,
   copayment,
   subsciptionPrice,
+  setDescriptionView,
   ...rest
 }: Props) => {
-  const [searchParams, setSearchParams] = useSearchParams();
-
-  const handleClick = () => {
-    searchParams.delete("deviceDialog");
-    setSearchParams(searchParams);
-  };
-
   return (
     <div>
       <div className="mb-10 flex items-center justify-between">
-        <DialogClose className="flex h-8 w-8 items-center justify-center rounded-[4px] shadow-shadow-1">
+        <Button onClick={setDescriptionView} variant="icon" size="icon">
           <img src={arrowLeftIcon} alt="back" />
-        </DialogClose>
+        </Button>
         <h2 className="heading-2 text-center">Order confirmation</h2>
-        <DialogClose
-        onClick={handleClick}
-        >
+        <DialogClose>
           <img src={closeIcon} alt="close" />
         </DialogClose>
       </div>
@@ -65,11 +58,13 @@ const ConfirmOrderDetails = ({
       <p className="mb-14 text-[0.75rem] leading-[1.5]">
         Munich, House No:121, 2nd Floor, Sector 18
       </p>
-      <ConfirmOrderButton
-        {...rest}
-        title={title}
-        subsciptionPrice={subsciptionPrice}
-      />
+      <DialogClose className="w-full">
+        <ConfirmOrderButton
+          {...rest}
+          title={title}
+          subsciptionPrice={subsciptionPrice}
+        />
+      </DialogClose>
     </div>
   );
 };
