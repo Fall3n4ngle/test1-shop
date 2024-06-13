@@ -1,41 +1,15 @@
-import { useAppSelector } from "@/store/hooks";
-import { selectFirstDevice } from "@/store/slices/orderedDevices";
-import InfoCard from "./InfoCard";
-import { Link } from "react-router-dom";
-import OrderPreviewCard from "./OrderPreviewCard";
+import { useMediaQuery } from "@/shared/hooks";
+import DevicesDesktop from "./DevicesDesktop";
+import DevicesMobile from "./DevicesMobile";
 
 const Devices = () => {
-  const firstDevice = useAppSelector(selectFirstDevice);
+  const isDesktop = useMediaQuery("(min-width: 1024px)");
 
-  if (!firstDevice) {
-    return (
-      <>
-        <h3 className="mb-2 text-[1rem] font-semibold leading-[1.31]">
-          Your Devices
-        </h3>
-        <div>
-          <InfoCard
-            title="No Devices"
-            description="Order a device first and it will show up here."
-          />
-        </div>
-      </>
-    );
+  if (isDesktop) {
+    return <DevicesDesktop />;
   }
 
-  return (
-    <>
-      <div className="flex items-center justify-between">
-        <h3 className="mb-2 text-[1rem] font-semibold leading-[1.31]">
-          Your Devices
-        </h3>
-        <Link to="/device/my">
-          <span className="text-[0.75rem] text-primary">See all</span>
-        </Link>
-      </div>
-      <OrderPreviewCard {...firstDevice} />
-    </>
-  );
+  return <DevicesMobile />;
 };
 
 export default Devices;

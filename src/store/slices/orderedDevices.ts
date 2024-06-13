@@ -51,3 +51,5 @@ export const { reducer: devicesReducer, reducerPath: devicesReducerPath } =
 
 export const selectDevices = (state: RootState) => state.orderedDevices.devices;
 export const selectFirstDevice = (state: RootState) => selectDevices(state)[0];
+export const selectFirstTwoDevices = (state: RootState) =>
+  selectDevices(state).slice(0, 2);
