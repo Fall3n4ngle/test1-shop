@@ -31,9 +31,9 @@
 }
 
 .heading-2 {
-  @apply text-[1.125rem] font-bold leading-[1.36];
+  @apply text-[1.125rem] font-bold leading-[1.36] lg:text-[1.375rem];
 }
 
 .heading-3 {
-  @apply text-[1rem] font-bold leading-[1.36];
+  @apply text-[1rem] font-bold leading-[1.36] lg:text-[1.125rem] lg:leading-[1.33];
 }
