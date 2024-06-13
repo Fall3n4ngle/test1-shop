@@ -9,7 +9,7 @@ const DeviceCard = ({ title, image, subsciptionPrice, copayment }: Props) => {
         <img
           src={image}
           alt={title}
-          className="absolute left-0 top-0 h-full w-full object-cover"
+          className="absolute left-0 top-0 h-full w-full object-contain"
         />
       </div>
       <div className="flex grow flex-col items-start">

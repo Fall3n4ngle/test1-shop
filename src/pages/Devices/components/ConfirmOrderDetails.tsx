@@ -3,7 +3,7 @@ import ConfirmOrderButton from "./ConfirmOrderButton";
 import { DialogClose } from "@/shared/components/ui";
 import closeIcon from "@/assets/close.svg";
 import arrowLeftIcon from "@/assets/arrow-left.svg";
-// import { useSearchParams } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 
 type Props = Pick<
   Device,
@@ -16,12 +16,12 @@ const ConfirmOrderDetails = ({
   subsciptionPrice,
   ...rest
 }: Props) => {
-  // const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams, setSearchParams] = useSearchParams();
 
-  // const handleClick = () => {
-  //   searchParams.delete("deviceDialog");
-  //   setSearchParams(searchParams);
-  // };
+  const handleClick = () => {
+    searchParams.delete("deviceDialog");
+    setSearchParams(searchParams);
+  };
 
   return (
     <div>
@@ -31,7 +31,7 @@ const ConfirmOrderDetails = ({
         </DialogClose>
         <h2 className="heading-2 text-center">Order confirmation</h2>
         <DialogClose
-        // onClick={handleClick}
+        onClick={handleClick}
         >
           <img src={closeIcon} alt="close" />
         </DialogClose>

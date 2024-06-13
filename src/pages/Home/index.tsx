@@ -14,7 +14,7 @@ const HomePage = () => {
       <div className="mb-8 flex items-center justify-between">
         <h1 className="heading-1 leading-[1.36]">Hello!</h1>
         <Link to="/device" className="hidden lg:block">
-          <Button variant="third">New Order</Button>
+          <Button variant="third" className="w-[7.5rem] h-10">New Order</Button>
         </Link>
       </div>
       <div className="mb-10">

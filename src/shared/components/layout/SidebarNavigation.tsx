@@ -6,10 +6,10 @@ const SidebarNavigation = () => {
   return (
     <nav>
       <ul className="flex flex-col gap-3">
-        {navigationsItems.map((item) => (
-          <li key={item.href}>
+        {navigationsItems.map(({ label, href, Icon }) => (
+          <li key={href}>
             <NavLink
-              to={item.href}
+              to={href}
               className={({ isActive }) =>
                 cn(
                   "flex items-end gap-4 px-[1.125rem] py-3 text-[1.125rem] font-semibold text-muted-foreground",
@@ -17,8 +17,8 @@ const SidebarNavigation = () => {
                 )
               }
             >
-              <img src={item.icon} alt={item.label} width={32} height={32} />
-              <span>{item.label}</span>
+              <Icon size={32} />
+              <span>{label}</span>
             </NavLink>
           </li>
         ))}
