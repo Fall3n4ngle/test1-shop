@@ -1,8 +1,8 @@
 import { formatDate } from "@/shared/utils";
-import { MyDevice } from "@/store/slices/orderedDevices";
+import { OrderedDevice } from "@/store/slices/orderedDevices";
 import arrowRightIcon from "@/assets/arrow-right.svg";
 
-type Props = Omit<MyDevice, "id">;
+type Props = Omit<OrderedDevice, "id">;
 
 const DeviceCard = ({ image, orderedAt, title, quanity }: Props) => {
   return (
