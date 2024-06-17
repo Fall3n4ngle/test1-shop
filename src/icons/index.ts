@@ -1,3 +1,13 @@
 export { default as HomeIcon } from "./HomeIcon";
 export { default as OrderIcon } from "./OrderIcon";
 export { default as DeviceIcon } from "./DeviceIcon";
+export { default as TriangleDownIcon } from "./TriangleDownIcon";
+export { default as TriangleUpIcon } from "./TriangleUpIcon";
+export { default as NotificationIcon } from "./NotificationIcon";
+export { default as SettingsIcon } from "./SettingsIcon";
+export { default as SearchIcon } from "./SearchIcon";
+export { default as CloseIcon } from "./CloseIcon";
+export { default as LogoutIcon } from "./LogoutIcon";
+export { default as DotsIcon } from "./DotsIcon";
+export { default as ArrowLeftIcon } from "./ArrowLeftIcon";
+export { default as ArrowRightIcon } from "./ArrowRightIcon";

@@ -2,10 +2,15 @@ import { Device } from "@/shared/types/Device";
 
 type Props = Omit<Device, "description" | "id">;
 
-const DeviceCard = ({ title, image, subsciptionPrice, copayment }: Props) => {
+const DeviceCard = ({
+  title,
+  image,
+  subscriptionPrice: subsciptionPrice,
+  copayment,
+}: Props) => {
   return (
     <article className="flex items-center gap-4 rounded-[4px] bg-background py-4 pl-6 pr-4 shadow-shadow-1">
-      <div className="relative basis-[44.8px] self-start overflow-hidden pt-[23.6%]">
+      <div className="relative basis-[14%] self-start overflow-hidden pt-[21.6%]">
         <img
           src={image}
           alt={title}

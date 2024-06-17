@@ -1,6 +1,6 @@
-import { SortValue } from "@/shared/types/SortValue";
+import { Device, Sort } from "@/shared/types";
 
 export type Filters = {
   search: string;
-  sortBy: SortValue;
+  sort: Sort<Device>;
 };

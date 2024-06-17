@@ -10,8 +10,8 @@ const App = () => {
     <Routes>
       <Route path="/" element={<Layout />}>
         <Route index element={<HomePage />} />
-        <Route path="/device" element={<DevicePage />} />
-        <Route path="/device/my" element={<MyDevicesPage />} />
+        <Route path="/devices" element={<DevicePage />} />
+        <Route path="/devices/my" element={<MyDevicesPage />} />
 
         <Route path="*" element={<NotFoundPage />} />
       </Route>

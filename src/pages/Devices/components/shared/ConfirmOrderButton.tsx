@@ -2,7 +2,10 @@ import { Button } from "@/shared/components/ui";
 import { useAppDispatch } from "@/store/hooks";
 import { OrderedDevice, addOrderedDevice } from "@/store/slices/orderedDevices";
 
-type Props = Omit<OrderedDevice, "orderedAt" | "quanity">;
+type Props = Omit<
+  OrderedDevice,
+  "orderedAt" | "quanity" | "status" | "deliveryDate"
+>;
 
 const ConfirmOrderButton = (props: Props) => {
   const dispatch = useAppDispatch();

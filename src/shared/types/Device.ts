@@ -3,6 +3,6 @@ export type Device = {
   image: string;
   title: string;
   description: string;
-  subsciptionPrice: number;
+  subscriptionPrice: number;
   copayment: number;
 };

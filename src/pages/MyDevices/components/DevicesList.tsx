@@ -1,32 +1,15 @@
-import { useAppSelector, selectDevices } from "@/store";
-import DeviceCard from "./DeviceCard";
-import { Sort } from "@/shared/components";
-import { useState } from "react";
-import { sortOptions } from "@/shared/const";
-import { SortValue } from "@/shared/types";
-import { useSortedDevices } from "@/shared/hooks";
+import { useMediaQuery } from "@/shared/hooks";
+import { DevicesListMobile } from "./mobile";
+import { DevicesTable } from "./desktop";
 
 const DevicesList = () => {
-  const devices = useAppSelector(selectDevices);
-  const [sortBy, setSortBy] = useState<SortValue>(sortOptions[0].value);
+  const isDesktop = useMediaQuery("(min-width: 1024px)");
 
-  const sortedDevices = useSortedDevices({
-    devices,
-    sortBy,
-  });
+  if (isDesktop) {
+    return <DevicesTable />;
+  }
 
-  return (
-    <>
-      <div className="mb-6">
-        <Sort value={sortBy} onValueChange={setSortBy} />
-      </div>
-      <div className="flex flex-col gap-3">
-        {sortedDevices.map(({ id, ...device }) => (
-          <DeviceCard key={id} {...device} />
-        ))}
-      </div>
-    </>
-  );
+  return <DevicesListMobile />;
 };
 
 export default DevicesList;

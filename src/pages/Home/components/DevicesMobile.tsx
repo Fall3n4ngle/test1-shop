@@ -29,7 +29,7 @@ const DevicesMobile = () => {
         <h3 className="mb-2 text-[1rem] font-semibold leading-[1.31]">
           Your Devices
         </h3>
-        <Link to="/device/my">
+        <Link to="/devices/my">
           <span className="text-[0.75rem] text-primary">See all</span>
         </Link>
       </div>

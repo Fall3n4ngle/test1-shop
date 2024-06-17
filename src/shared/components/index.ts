@@ -1,3 +1,4 @@
 export * from "./ui";
 export { Layout } from "./layout";
-export { default as Sort } from "./Sort";
+export { default as SelectSort } from "./SelectSort";
+export * from "./SortProvider";

@@ -5,7 +5,7 @@ export const sortOptions = [
         Alphabetically: <span className="text-primary">A-z</span>
       </span>
     ),
-    value: "alphabetical.asc",
+    value: "title.asc",
   },
   {
     label: (
@@ -13,7 +13,7 @@ export const sortOptions = [
         Alphabetically: <span className="text-primary">Z-a</span>
       </span>
     ),
-    value: "alphabetical.desc",
+    value: "title.desc",
   },
   {
     label: (
@@ -21,7 +21,7 @@ export const sortOptions = [
         Price: <span className="text-primary">Low to high</span>
       </span>
     ),
-    value: "price.asc",
+    value: "subscriptionPrice.asc",
   },
   {
     label: (
@@ -29,6 +29,6 @@ export const sortOptions = [
         Price: <span className="text-primary">High to low</span>
       </span>
     ),
-    value: "price.desc",
+    value: "subscriptionPrice.desc",
   },
 ] as const;

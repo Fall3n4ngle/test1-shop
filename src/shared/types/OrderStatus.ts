@@ -1,0 +1,1 @@
+export type OrderStatus = "Use" | "Return" | "Ordered" | "Delivered";

@@ -1,3 +1,3 @@
 export { useDebounce } from "./useDebounce";
-export { useSortedDevices } from "./useSortedDevices";
+export { useSortedObjects } from "./useSortedObjects";
 export { useMediaQuery } from "./useMediaQuery";

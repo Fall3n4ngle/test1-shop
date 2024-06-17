@@ -1,20 +1,20 @@
-import { useSortedDevices } from "@/shared/hooks/useSortedDevices";
+import { useSortedObjects } from "@/shared/hooks";
+import { Sort } from "@/shared/types";
 import { Device } from "@/shared/types/Device";
-import { SortValue } from "@/shared/types/SortValue";
 import { useMemo } from "react";
 
 type UseDevicesProps = {
   initialDevices: Device[];
   search: string;
-  sortBy: SortValue;
+  sort: Sort<Device>;
 };
 
 export const useDevices = ({
   initialDevices,
   search,
-  sortBy,
+  sort,
 }: UseDevicesProps) => {
-  const sortedDevices = useSortedDevices({ devices: initialDevices, sortBy });
+  const sortedDevices = useSortedObjects({ devices: initialDevices, sort });
 
   const sortedAndSearchedDevices = useMemo(
     () =>

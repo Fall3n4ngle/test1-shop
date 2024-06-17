@@ -1,6 +1,6 @@
 import { OrderedDevice } from "@/store/slices/orderedDevices";
-import arrowRightIcon from "@/assets/arrow-right.svg";
 import { formatDate } from "@/shared/utils/formatDate";
+import { ArrowRightIcon } from "@/icons";
 
 type Props = Omit<OrderedDevice, "id">;
 
@@ -22,8 +22,11 @@ const DeviceCard = ({ title, image, orderedAt }: Props) => {
           Ordered {formatDate(orderedAt, ".")}
         </p>
       </div>
-      <button className="flex h-6 w-6 shrink-0 items-center justify-center rounded-[4px] bg-[#f5f6f6] lg:hidden">
-        <img src={arrowRightIcon} alt="Arrow right" />
+      <button
+        aria-label="View details"
+        className="flex h-6 w-6 shrink-0 items-center justify-center rounded-[4px] bg-[#f5f6f6] lg:hidden"
+      >
+        <ArrowRightIcon />
       </button>
     </div>
   );

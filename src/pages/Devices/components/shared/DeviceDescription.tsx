@@ -1,6 +1,6 @@
 import { Button, DialogClose } from "@/shared/components/ui";
 import { Device } from "@/shared/types/Device";
-import closeIcon from "@/assets/close.svg";
+import { CloseIcon } from "@/icons";
 
 type Props = Omit<Device, "id"> & {
   setOrderView: () => void;
@@ -10,18 +10,18 @@ const DeviceDescription = ({
   description,
   image,
   title,
-  subsciptionPrice,
+  subscriptionPrice: subsciptionPrice,
   copayment,
   setOrderView,
 }: Props) => {
   return (
     <div>
-      <div className="mb-[26px] lg:mb-8 grid grid-cols-3 items-center lg:grid-cols-1">
+      <div className="mb-[26px] grid grid-cols-3 items-center lg:mb-8 lg:grid-cols-1">
         <h3 className="heading-3 col-start-2 text-center lg:order-2 lg:col-start-auto lg:text-left lg:text-[1.375rem]">
           {title}
         </h3>
         <DialogClose className="col-start-3 justify-self-end lg:col-start-auto">
-          <img src={closeIcon} alt="close" />
+          <CloseIcon />
         </DialogClose>
       </div>
       <div className="flex flex-col gap-4 lg:flex-row lg:gap-8">

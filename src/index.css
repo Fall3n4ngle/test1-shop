@@ -37,3 +37,7 @@
 .heading-3 {
   @apply text-[1rem] font-bold leading-[1.36] lg:text-[1.125rem] lg:leading-[1.33];
 }
+
+#my-devices td {
+  @apply text-center;
+}

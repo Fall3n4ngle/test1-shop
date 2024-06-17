@@ -1,14 +1,18 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import { RootState } from "../store";
 import { formatDate } from "@/shared/utils/formatDate";
+import { OrderStatus } from "@/shared/types";
+import { getDateInFuture, getRandomStatus } from "../utils";
 
 export type OrderedDevice = {
   id: number;
   title: string;
   image: string;
-  subsciptionPrice: number;
+  subscriptionPrice: number;
   orderedAt: Date;
   quanity: number;
+  status: OrderStatus;
+  deliveryDate: Date;
 };
 
 const orderedDevicesSlice = createSlice({
@@ -19,7 +23,9 @@ const orderedDevicesSlice = createSlice({
   reducers: {
     addOrderedDevice: (
       state,
-      action: PayloadAction<Omit<OrderedDevice, "quanity">>,
+      action: PayloadAction<
+        Omit<OrderedDevice, "quanity" | "status" | "deliveryDate">
+      >,
     ) => {
       const newDevice = action.payload;
 
@@ -40,7 +46,15 @@ const orderedDevicesSlice = createSlice({
         return;
       }
 
-      state.devices.push({ ...newDevice, quanity: 1 });
+      const randomStatus = getRandomStatus();
+      const deliveryDate = getDateInFuture(3);
+
+      state.devices.push({
+        ...newDevice,
+        quanity: 1,
+        status: randomStatus,
+        deliveryDate,
+      });
     },
   },
 });

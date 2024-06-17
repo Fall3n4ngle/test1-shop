@@ -1,12 +1,11 @@
 import { Device } from "@/shared/types/Device";
 import ConfirmOrderButton from "./ConfirmOrderButton";
 import { Button, DialogClose } from "@/shared/components/ui";
-import closeIcon from "@/assets/close.svg";
-import arrowLeftIcon from "@/assets/arrow-left.svg";
+import { ArrowLeftIcon, CloseIcon } from "@/icons";
 
 type Props = Pick<
   Device,
-  "title" | "copayment" | "subsciptionPrice" | "id" | "image"
+  "title" | "copayment" | "subscriptionPrice" | "id" | "image"
 > & {
   setDescriptionView: () => void;
 };
@@ -14,24 +13,29 @@ type Props = Pick<
 const ConfirmOrderDetails = ({
   title,
   copayment,
-  subsciptionPrice,
+  subscriptionPrice: subsciptionPrice,
   setDescriptionView,
   ...rest
 }: Props) => {
   return (
     <div>
       <div className="mb-10 flex items-center justify-between">
-        <Button onClick={setDescriptionView} variant="icon" size="icon">
-          <img src={arrowLeftIcon} alt="back" />
+        <Button
+          onClick={setDescriptionView}
+          variant="icon"
+          size="icon"
+          aria-label="back"
+        >
+          <ArrowLeftIcon />
         </Button>
         <h2 className="heading-2 text-center">Order confirmation</h2>
         <DialogClose>
-          <img src={closeIcon} alt="close" />
+          <CloseIcon />
         </DialogClose>
       </div>
       <h3 className="heading-3 mb-4 lg:mb-2">Order summary</h3>
       <div className="mb-4 flex items-center justify-between">
-        <p className="text-[0.75rem] font-semibold leading-[1.4] lg:leading-[1.35] lg:text-[0.875rem]">
+        <p className="text-[0.75rem] font-semibold leading-[1.4] lg:text-[0.875rem] lg:leading-[1.35]">
           Product
         </p>
         <p className="lg:font-bold">
@@ -39,7 +43,7 @@ const ConfirmOrderDetails = ({
         </p>
       </div>
       <div className="mb-2.5 flex items-center justify-between lg:mb-1.5">
-        <p className="text-[0.75rem] font-semibold leading-[1.4] lg:leading-[1.35] lg:text-[0.875rem]">
+        <p className="text-[0.75rem] font-semibold leading-[1.4] lg:text-[0.875rem] lg:leading-[1.35]">
           Employee Copayment
         </p>
         <p className="font-bold leading-[1.33] text-primary">{copayment} €</p>
@@ -49,7 +53,7 @@ const ConfirmOrderDetails = ({
         release policy will apply.
       </p>
       <div className="mb-[2.125rem] flex items-center justify-between lg:mb-12">
-        <p className="text-[0.75rem] font-semibold leading-[1.4] lg:leading-[1.35] lg:text-[0.875rem]">
+        <p className="text-[0.75rem] font-semibold leading-[1.4] lg:text-[0.875rem] lg:leading-[1.35]">
           Subscription Price
         </p>
         <p className="font-bold leading-[1.33] text-primary">
@@ -64,7 +68,7 @@ const ConfirmOrderDetails = ({
           </p>
         </div>
         <Button
-          className="hidden h-9 text-[0.875rem] lg:inline-flex self-end"
+          className="hidden h-9 self-end text-[0.875rem] lg:inline-flex"
           variant="secondary"
         >
           Change address
@@ -74,7 +78,7 @@ const ConfirmOrderDetails = ({
         <ConfirmOrderButton
           {...rest}
           title={title}
-          subsciptionPrice={subsciptionPrice}
+          subscriptionPrice={subsciptionPrice}
         />
       </DialogClose>
     </div>

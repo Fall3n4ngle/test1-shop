@@ -1,4 +1,4 @@
-import arrowRightIcon from "@/assets/arrow-right.svg";
+import { ArrowRightIcon } from "@/icons";
 
 type Props = {
   title: string;
@@ -14,8 +14,11 @@ const InfoCard = ({ title, description }: Props) => {
         </h4>
         <p className="text-muted-foreground">{description}</p>
       </div>
-      <button className="flex h-6 w-6 shrink-0 items-center justify-center rounded-[4px] bg-background-secondary lg:hidden">
-        <img src={arrowRightIcon} alt="Arrow right" />
+      <button
+        aria-label="View products"
+        className="flex h-6 w-6 shrink-0 items-center justify-center rounded-[4px] bg-background-secondary lg:hidden"
+      >
+        <ArrowRightIcon />
       </button>
     </article>
   );

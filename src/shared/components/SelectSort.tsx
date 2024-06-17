@@ -5,15 +5,14 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/shared/components";
-import { SortValue } from "@/shared/types";
 import { sortOptions } from "@/shared/const";
 
 type Props = {
-  value: SortValue;
-  onValueChange: (value: SortValue) => void;
+  value: string;
+  onValueChange: (value: string) => void;
 };
 
-const Sort = ({ value, onValueChange }: Props) => {
+const SelectSort = ({ value, onValueChange }: Props) => {
   return (
     <Select value={value} onValueChange={onValueChange}>
       <SelectTrigger className="w-[151px] shadow-shadow-1">
@@ -34,4 +33,4 @@ const Sort = ({ value, onValueChange }: Props) => {
   );
 };
 
-export default Sort;
+export default SelectSort;

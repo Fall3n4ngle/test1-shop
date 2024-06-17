@@ -21,7 +21,7 @@ const DevicesDesktop = () => {
           />
         </div>
         <div className="text-right">
-          <Link to="/device">
+          <Link to="/devices">
             <Button className="h-[39px]">Order device</Button>
           </Link>
         </div>
@@ -40,12 +40,12 @@ const DevicesDesktop = () => {
         ))}
       </div>
       <div className="flex items-center justify-end gap-4">
-        <Link to="/device/my">
+        <Link to="/devices/my">
           <Button variant="secondary" className="h-10">
             View all
           </Button>
         </Link>
-        <Link to="/device">
+        <Link to="/devices">
           <Button className="h-10">Order device</Button>
         </Link>
       </div>
