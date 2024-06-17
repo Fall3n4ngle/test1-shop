@@ -1,8 +1,10 @@
-import { PayloadAction, createSlice } from "@reduxjs/toolkit";
+import { PayloadAction, createSlice, createSelector } from "@reduxjs/toolkit";
 import { RootState } from "../store";
 import { formatDate } from "@/shared/utils/formatDate";
 import { OrderStatus } from "@/shared/types";
 import { getDateInFuture, getRandomStatus } from "../utils";
+import { selectSort } from "./sort";
+import { sortObjects } from "@/shared/utils";
 
 export type OrderedDevice = {
   id: number;
@@ -60,10 +62,25 @@ const orderedDevicesSlice = createSlice({
 });
 
 export const { addOrderedDevice } = orderedDevicesSlice.actions;
-export const { reducer: devicesReducer, reducerPath: devicesReducerPath } =
-  orderedDevicesSlice;
+export const {
+  reducer: orderedDevicesReducer,
+  reducerPath: orderedDevicesReducerPath,
+} = orderedDevicesSlice;
 
 export const selectDevices = (state: RootState) => state.orderedDevices.devices;
+export const selectSortedOrderedDevices = createSelector(
+  [selectDevices, selectSort],
+  (devices, sort) => {
+    return sortObjects({
+      sort: {
+        sortKey: sort.sortKey as keyof OrderedDevice,
+        sortOrder: sort.sortOrder,
+      },
+      data: devices,
+    });
+  },
+);
+
 export const selectFirstDevice = (state: RootState) => selectDevices(state)[0];
 export const selectFirstTwoDevices = (state: RootState) =>
   selectDevices(state).slice(0, 2);

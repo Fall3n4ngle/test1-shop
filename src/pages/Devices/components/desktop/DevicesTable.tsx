@@ -1,21 +1,27 @@
 import { SortItem, SortProvider } from "@/shared/components";
 import { Device, SortOrder } from "@/shared/types";
-import { Filters } from "../../types/Filters";
-import DeviceDialog from "./DeviceDialog";
 import { useCallback } from "react";
+import DeviceDialog from "./DeviceDialog";
+import {
+  selectSort,
+  setSortKey,
+  useAppDispatch,
+  useAppSelector,
+} from "@/store";
 
 type Props = {
   devices: Device[];
-  sort: Filters["sort"];
-  onSortChange: (sort: Filters["sort"]) => void;
 };
 
-const DevicesTable = ({ sort, onSortChange, devices }: Props) => {
+const DevicesTable = ({ devices }: Props) => {
+  const sort = useAppSelector(selectSort);
+  const dispatch = useAppDispatch();
+
   const handleValueChange = useCallback(
     ({ sortKey, sortOrder }: { sortKey: string; sortOrder: SortOrder }) => {
-      onSortChange({ sortKey: sortKey as keyof Device, sortOrder });
+      dispatch(setSortKey({ sortKey: sortKey as keyof Device, sortOrder }));
     },
-    [onSortChange],
+    [dispatch],
   );
 
   return (

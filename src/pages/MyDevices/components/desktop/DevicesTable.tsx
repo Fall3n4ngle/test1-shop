@@ -1,33 +1,30 @@
-import { SortProvider, SortItem } from "@/shared/components";
+import { SortItem, SortProvider } from "@/shared/components";
+import { SortOrder } from "@/shared/types";
 import { formatDate } from "@/shared/utils";
-import { selectDevices, useAppSelector } from "@/store";
+import {
+  selectSort,
+  setSortKey,
+  useAppDispatch,
+  useAppSelector,
+} from "@/store";
+import { selectSortedOrderedDevices } from "@/store/slices/orderedDevices";
+import { useCallback } from "react";
 import { getStatusColor } from "../../utils/getStatusColor";
-import { useCallback, useState } from "react";
-import { Sort, SortOrder } from "@/shared/types";
-import { OrderedDevice } from "@/store/slices/orderedDevices";
-import { useSortedObjects } from "@/shared/hooks";
 import NoDevices from "./NoDevices";
 
 const DevicesTable = () => {
-  const devices = useAppSelector(selectDevices);
-  const [sort, setSort] = useState<Sort<OrderedDevice>>({
-    sortKey: "title",
-    sortOrder: "asc",
-  });
-
-  const sortedDevices = useSortedObjects({
-    devices,
-    sort,
-  });
+  const sortedOrderedDevices = useAppSelector(selectSortedOrderedDevices);
+  const sort = useAppSelector(selectSort);
+  const dispatch = useAppDispatch();
 
   const handleValueChange = useCallback(
     ({ sortKey, sortOrder }: { sortKey: string; sortOrder: SortOrder }) => {
-      setSort({ sortKey: sortKey as keyof OrderedDevice, sortOrder });
+      dispatch(setSortKey({ sortKey, sortOrder }));
     },
-    [],
+    [dispatch],
   );
 
-  if (devices.length === 0) {
+  if (sortedOrderedDevices.length === 0) {
     return (
       <div className="pt-[1.25rem]">
         <NoDevices />
@@ -62,7 +59,7 @@ const DevicesTable = () => {
         </tr>
       </thead>
       <tbody className="bg-background shadow-shadow-1">
-        {sortedDevices.map((device) => {
+        {sortedOrderedDevices.map((device) => {
           const { backgorundColor, textColor } = getStatusColor(device.status);
 
           return (
