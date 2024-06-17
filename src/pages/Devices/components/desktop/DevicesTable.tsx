@@ -1,6 +1,6 @@
 import { SortItem, SortProvider } from "@/shared/components";
 import { Device, SortOrder } from "@/shared/types";
-import { Filters } from "../../types/filters";
+import { Filters } from "../../types/Filters";
 import DeviceDialog from "./DeviceDialog";
 import { useCallback } from "react";
 

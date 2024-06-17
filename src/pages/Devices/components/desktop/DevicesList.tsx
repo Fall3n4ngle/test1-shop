@@ -1,9 +1,8 @@
 import { Input } from "@/shared/components";
 import { devicesList } from "../../const/deviceList";
-import { useDevices } from "../../hooks/useDevices";
-import { useFilters } from "../../hooks/useFilters";
+import { useDevices, useFilters } from "../../hooks";
 import DevicesTable from "./DevicesTable";
-import { Filters } from "../../types/filters";
+import { Filters } from "../../types/Filters";
 import { useCallback } from "react";
 import { SearchIcon } from "@/icons";
 

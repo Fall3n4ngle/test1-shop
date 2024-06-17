@@ -1,6 +1,5 @@
 import { devicesList } from "../../const/deviceList";
-import { useDevices } from "../../hooks/useDevices";
-import { useFilters } from "../../hooks/useFilters";
+import { useDevices, useFilters } from "../../hooks";
 import DeviceDialog from "./DeviceDialog";
 import DeviceFilters from "./DevicesFilters";
 

@@ -36,7 +36,7 @@ const DevicesTable = () => {
   }
 
   return (
-    <table className="w-full table-fixed" id="my-devices">
+    <table className="w-full table-fixed">
       <thead className="border-b-[1rem] border-background-secondary bg-background">
         <tr>
           <SortProvider value={sort} onValueChange={handleValueChange}>
@@ -61,13 +61,13 @@ const DevicesTable = () => {
           </SortProvider>
         </tr>
       </thead>
-      <tbody className="rounded-[4px] bg-background shadow-shadow-1">
+      <tbody className="bg-background shadow-shadow-1">
         {sortedDevices.map((device) => {
           const { backgorundColor, textColor } = getStatusColor(device.status);
 
           return (
             <tr key={device.id} className="border-b border-[#d9d9d9]">
-              <td className="flex items-center gap-6 px-8 py-4">
+              <td className="px-8 py-4">
                 <h3 className="text-[0.875rem] font-semibold min-[1497px]:text-[1rem]">
                   {device.title}
                 </h3>
@@ -78,7 +78,7 @@ const DevicesTable = () => {
               <td className="px-8 text-center">
                 {formatDate(device.deliveryDate, ".")}
               </td>
-              <td className="px-8">
+              <td className="px-8 text-center">
                 <span
                   className="inline-block rounded-2xl px-2.5 py-1 text-[0.75rem] font-semibold xl:text-[1rem]"
                   style={{ backgroundColor: backgorundColor, color: textColor }}

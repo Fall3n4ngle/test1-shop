@@ -1,9 +1,8 @@
 import { SelectSort } from "@/shared/components";
 import { Input } from "@/shared/components/ui";
-import { Device } from "@/shared/types";
-import { SortOrder } from "@/shared/types/Sort";
+import { Device, SortOrder } from "@/shared/types";
 import { Dispatch, SetStateAction } from "react";
-import { Filters } from "../../types/filters";
+import { Filters } from "../../types/Filters";
 import { SearchIcon } from "@/icons";
 
 type Props = {

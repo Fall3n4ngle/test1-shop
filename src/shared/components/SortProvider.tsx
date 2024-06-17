@@ -1,7 +1,7 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { TriangleDownIcon, TriangleUpIcon } from "@/icons";
 import { cn } from "@/shared/utils";
-import { SortOrder } from "../types/Sort";
+import { SortOrder } from "@/shared/types";
 
 type ContextValue = {
   sortKey: string;
@@ -79,6 +79,32 @@ const SortItem = ({ children, value, className }: SortItemProps) => {
     }
   };
 
+  let indicators;
+  if (sortKey === value && sortOrder === "asc") {
+    indicators = (
+      <div className="text-primary">
+        <TriangleUpIcon />
+      </div>
+    );
+  } else if (sortKey === value && sortOrder === "desc") {
+    indicators = (
+      <div className="text-primary">
+        <TriangleDownIcon />
+      </div>
+    );
+  } else {
+    indicators = (
+      <div className="flex flex-col gap-[1px]">
+        <div>
+          <TriangleUpIcon />
+        </div>
+        <div>
+          <TriangleDownIcon />
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div
       role="button"
@@ -89,28 +115,7 @@ const SortItem = ({ children, value, className }: SortItemProps) => {
       )}
     >
       <span>{children}</span>
-      <div className="flex flex-col gap-[1px]">
-        <div
-          className={cn(
-            "hidden",
-            sortKey === value &&
-              sortOrder === "asc" &&
-              "block text-primary",
-          )}
-        >
-          <TriangleUpIcon />
-        </div>
-        <div
-          className={cn(
-            "hidden",
-            sortKey === value &&
-              sortOrder === "desc" &&
-              "block text-primary",
-          )}
-        >
-          <TriangleDownIcon />
-        </div>
-      </div>
+      {indicators}
     </div>
   );
 };

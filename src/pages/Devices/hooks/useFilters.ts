@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { Filters } from "../types/filters";
 import { useDebounce } from "@/shared/hooks";
+import { Filters } from "../types/Filters";
 
 export const useFilters = () => {
   const [filters, setFilters] = useState<Filters>({
