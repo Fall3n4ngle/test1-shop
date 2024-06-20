@@ -1,25 +1,31 @@
-import { SortItem, SortProvider } from "@/shared/components";
+import { SortItem } from "@/shared/components/sortable";
 import { SortOrder } from "@/shared/types";
-import { formatDate } from "@/shared/utils";
+import { cn, formatDate } from "@/shared/utils";
 import {
-  selectSort,
-  setSortKey,
+  selectSortedOrderedDevices,
+  setSortOD,
+  OrderedDevice,
   useAppDispatch,
   useAppSelector,
 } from "@/store";
-import { selectSortedOrderedDevices } from "@/store/slices/orderedDevices";
 import { useCallback } from "react";
 import { getStatusColor } from "../../utils/getStatusColor";
 import NoDevices from "./NoDevices";
+import { devicesTableColumns } from "./const";
 
 const DevicesTable = () => {
   const sortedOrderedDevices = useAppSelector(selectSortedOrderedDevices);
-  const sort = useAppSelector(selectSort);
+  const sort = useAppSelector((state) => state.orderedDevices.sort);
   const dispatch = useAppDispatch();
 
   const handleValueChange = useCallback(
-    ({ sortKey, sortOrder }: { sortKey: string; sortOrder: SortOrder }) => {
-      dispatch(setSortKey({ sortKey, sortOrder }));
+    (sortKey: string, order: SortOrder) => {
+      dispatch(
+        setSortOD({
+          sortKey: sortKey as keyof OrderedDevice,
+          sortOrder: order,
+        }),
+      );
     },
     [dispatch],
   );
@@ -36,26 +42,19 @@ const DevicesTable = () => {
     <table className="w-full table-fixed">
       <thead className="border-b-[1rem] border-background-secondary bg-background">
         <tr>
-          <SortProvider value={sort} onValueChange={handleValueChange}>
-            <th className="px-8 py-2">
-              <SortItem value="title">Device</SortItem>
-            </th>
-            <th className="px-8 py-2">
-              <SortItem value="orderedAt" className="justify-center">
-                Order <span className="hidden xl:inline">Date</span>
+          {devicesTableColumns.map(({ key, label }, index) => (
+            <th className="px-8 py-2" key={key}>
+              <SortItem
+                isActive={sort.sortKey === key}
+                sortKey={key}
+                order={sort.sortOrder}
+                onValueChange={handleValueChange}
+                className={cn(index === 0 && "justify-center")}
+              >
+                {label}
               </SortItem>
             </th>
-            <th className="px-8 py-2">
-              <SortItem value="deliveryDate" className="justify-center">
-                Delivery <span className="hidden xl:inline">Date</span>
-              </SortItem>
-            </th>
-            <th className="px-8 py-2">
-              <SortItem value="status" className="justify-center">
-                Status
-              </SortItem>
-            </th>
-          </SortProvider>
+          ))}
         </tr>
       </thead>
       <tbody className="bg-background shadow-shadow-1">

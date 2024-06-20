@@ -1,25 +1,24 @@
-import { SortItem, SortProvider } from "@/shared/components";
-import { Device, SortOrder } from "@/shared/types";
+import { SortItem } from "@/shared/components/sortable";
+import { SortOrder } from "@/shared/types";
 import { useCallback } from "react";
 import DeviceDialog from "./DeviceDialog";
 import {
-  selectSort,
-  setSortKey,
   useAppDispatch,
   useAppSelector,
+  Device,
+  selectSortedFilteredDevices,
+  setSortD,
 } from "@/store";
+import { devicesTableColumns } from "./const";
 
-type Props = {
-  devices: Device[];
-};
-
-const DevicesTable = ({ devices }: Props) => {
-  const sort = useAppSelector(selectSort);
+const DevicesTable = () => {
+  const sortedAndFilteredDevices = useAppSelector(selectSortedFilteredDevices);
+  const sort = useAppSelector((state) => state.devices.sort);
   const dispatch = useAppDispatch();
 
   const handleValueChange = useCallback(
-    ({ sortKey, sortOrder }: { sortKey: string; sortOrder: SortOrder }) => {
-      dispatch(setSortKey({ sortKey: sortKey as keyof Device, sortOrder }));
+    (sortKey: string, sortOrder: SortOrder) => {
+      dispatch(setSortD({ sortKey: sortKey as keyof Device, sortOrder }));
     },
     [dispatch],
   );
@@ -28,27 +27,22 @@ const DevicesTable = ({ devices }: Props) => {
     <table className="w-full table-fixed">
       <thead className="rounded-[4px] border-b-[1rem] border-background-secondary bg-background">
         <tr>
-          <SortProvider value={sort} onValueChange={handleValueChange}>
-            <th className="px-8 py-2">
-              <SortItem value="title">Product</SortItem>
-            </th>
-            <th className="px-8 py-2">
-              <SortItem value="copayment">
-                <span className="hidden min-[1500px]:inline">Employee</span>{" "}
-                Copayment
+          {devicesTableColumns.map(({ key, label }, index) => (
+            <th className="px-8 py-2" key={key} colSpan={index === 2 ? 2 : 1}>
+              <SortItem
+                isActive={sort.sortKey === key}
+                sortKey={key}
+                order={sort.sortOrder}
+                onValueChange={handleValueChange}
+              >
+                {label}
               </SortItem>
             </th>
-            <th className="px-8 py-2" colSpan={2}>
-              <SortItem value="subscriptionPrice">
-                Subscription{" "}
-                <span className="hidden min-[1500px]:inline">Price</span>
-              </SortItem>
-            </th>
-          </SortProvider>
+          ))}
         </tr>
       </thead>
       <tbody className="rounded-[4px] bg-background shadow-none">
-        {devices.map((device) => (
+        {sortedAndFilteredDevices.map((device) => (
           <tr key={device.id} className="border-b border-[#d9d9d9]">
             <td className="flex items-center gap-6 px-8 py-4">
               <img

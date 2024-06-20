@@ -5,7 +5,7 @@ import {
   DialogTrigger,
 } from "@/shared/components";
 import { DeviceDialogContent } from "../shared";
-import { Device } from "@/shared/types";
+import { Device } from "@/store";
 
 const DeviceDialog = (props: Device) => {
   return (

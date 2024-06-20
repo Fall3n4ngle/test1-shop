@@ -1,6 +1,6 @@
-import { OrderedDevice } from "@/store/slices/orderedDevices";
 import { formatDate } from "@/shared/utils/formatDate";
 import { ArrowRightIcon } from "@/icons";
+import { OrderedDevice } from "@/store";
 
 type Props = Omit<OrderedDevice, "id">;
 

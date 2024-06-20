@@ -1,11 +1,7 @@
-import { createSelector, createSlice } from "@reduxjs/toolkit";
 import Deviceimage from "@/assets/device.jpg";
-import { RootState } from "../store";
-import { selectSort } from "./sort";
-import { sortObjects } from "@/shared/utils";
-import { Device } from "@/shared/types";
+import { Device } from "./types";
 
-const intialDevices = [
+export const intialDevices: Device[] = [
   {
     id: 1,
     image: Deviceimage,
@@ -43,29 +39,3 @@ const intialDevices = [
     copayment: 200,
   },
 ];
-
-const devicesSlice = createSlice({
-  name: "devices",
-  initialState: {
-    devices: intialDevices,
-  },
-  reducers: {},
-});
-
-export const { reducer: devicesReducer, reducerPath: devicesReducerPath } =
-  devicesSlice;
-
-const selectDevices = (state: RootState) => state.devices.devices;
-
-export const selectSortedDevices = createSelector(
-  [selectDevices, selectSort],
-  (devices, sort) => {
-    return sortObjects({
-      sort: {
-        sortKey: sort.sortKey as keyof Device,
-        sortOrder: sort.sortOrder,
-      },
-      data: devices,
-    });
-  },
-);

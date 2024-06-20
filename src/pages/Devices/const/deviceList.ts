@@ -1,5 +1,5 @@
 import Deviceimage from "@/assets/device.jpg";
-import { Device } from "@/shared/types/Device";
+import { Device } from "@/store";
 
 export const devicesList: Device[] = [
   {

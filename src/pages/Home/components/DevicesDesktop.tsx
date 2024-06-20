@@ -1,5 +1,4 @@
-import { useAppSelector } from "@/store";
-import { selectFirstTwoDevices } from "@/store/slices/orderedDevices";
+import { useAppSelector, selectFirstTwoDevices } from "@/store";
 import InfoCard from "./InfoCard";
 import { Button } from "@/shared/components";
 import { Link } from "react-router-dom";

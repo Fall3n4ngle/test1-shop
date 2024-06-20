@@ -1,10 +1,19 @@
 export * from "./store";
 export * from "./hooks";
+
 export {
   addOrderedDevice,
-  selectDevices,
   selectFirstDevice,
   selectSortedOrderedDevices,
+  setSortOD,
+  selectFirstTwoDevices,
 } from "./slices/orderedDevices";
-export { setSortKey, selectSort } from "./slices/sort";
-export { selectSortedDevices } from "./slices/devices";
+
+export {
+  selectSortedFilteredDevices,
+  setSearch,
+  setSortD,
+} from "./slices/devices";
+
+export type { Device } from "./slices/devices";
+export type { OrderedDevice, OrderStatus } from "./slices/orderedDevices";

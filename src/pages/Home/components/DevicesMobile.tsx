@@ -1,5 +1,4 @@
-import { useAppSelector } from "@/store/hooks";
-import { selectFirstDevice } from "@/store/slices/orderedDevices";
+import { selectFirstDevice, useAppSelector } from "@/store";
 import InfoCard from "./InfoCard";
 import { Link } from "react-router-dom";
 import DeviceCard from "./DeviceCard";

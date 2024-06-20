@@ -1,26 +1,19 @@
-import { useState } from "react";
-import { devicesList } from "../../const/deviceList";
-import { useDevices } from "../../hooks";
+import { selectSortedFilteredDevices, useAppSelector } from "@/store";
+import { SearchFilter } from "../shared";
 import DeviceDialog from "./DeviceDialog";
-import DeviceFilters from "./DevicesFilters";
-import { useDebounce } from "@/shared/hooks";
+import SortFilter from "./SortFilter";
 
 const DevicesList = () => {
-  const [search, setSearch] = useState("");
-  const debouncedSearch = useDebounce(search, 500);
-
-  const sortedAndSearchedDevices = useDevices({
-    devices: devicesList,
-    search: debouncedSearch,
-  });
+  const sortedAndFilteredDevices = useAppSelector(selectSortedFilteredDevices);
 
   return (
     <>
-      <div className="mb-[1.25rem]">
-        <DeviceFilters search={search} setSearch={setSearch} />
+      <div className="mb-[1.25rem] flex flex-col gap-3">
+        <SearchFilter />
+        <SortFilter />
       </div>
       <div className="flex flex-col gap-2.5">
-        {sortedAndSearchedDevices.map((device) => (
+        {sortedAndFilteredDevices.map((device) => (
           <DeviceDialog key={device.id} {...device} />
         ))}
       </div>
