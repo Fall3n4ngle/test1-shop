@@ -1,7 +1,7 @@
 import { Dialog, DialogContent, DialogTrigger } from "@/shared/components/ui";
 import DeviceCard from "./DeviceCard";
-import { Device } from "@/shared/types/Device";
 import { DeviceDialogContent } from "../shared";
+import { Device } from "@/store/slices/devices/types";
 
 const DeviceDialog = ({ description, id, ...device }: Device) => {
   return (

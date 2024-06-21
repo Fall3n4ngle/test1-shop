@@ -1,7 +1,7 @@
-import { Device } from "@/shared/types/Device";
 import ConfirmOrderButton from "./ConfirmOrderButton";
 import { Button, DialogClose } from "@/shared/components/ui";
 import { ArrowLeftIcon, CloseIcon } from "@/icons";
+import { Device } from "@/store";
 
 type Props = Pick<
   Device,

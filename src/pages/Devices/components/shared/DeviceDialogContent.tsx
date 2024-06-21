@@ -1,7 +1,7 @@
-import { Device } from "@/shared/types";
 import { useState } from "react";
 import DeviceDescription from "./DeviceDescription";
 import ConfirmOrderDetails from "./ConfirmOrderDetails";
+import { Device } from "@/store";
 
 const DeviceDialogContent = ({ id, description, ...device }: Device) => {
   const [view, setView] = useState<"description" | "order">("description");

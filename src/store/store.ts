@@ -1,7 +1,6 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import { persistStore, persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
-import { sortReducer, sortReducerPath } from "./slices/sort";
 import {
   orderedDevicesReducer,
   orderedDevicesReducerPath,
@@ -18,7 +17,6 @@ const persistedReducer = persistReducer(
   combineReducers({
     [devicesReducerPath]: devicesReducer,
     [orderedDevicesReducerPath]: orderedDevicesReducer,
-    [sortReducerPath]: sortReducer,
   }),
 );
 

@@ -1,4 +1,4 @@
-import { OrderStatus } from "@/shared/types";
+import { OrderStatus } from "@/store";
 
 const map: Record<OrderStatus, { backgorundColor: string; textColor: string }> =
   {

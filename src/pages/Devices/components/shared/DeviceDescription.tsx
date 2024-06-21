@@ -1,6 +1,6 @@
 import { Button, DialogClose } from "@/shared/components/ui";
-import { Device } from "@/shared/types/Device";
 import { CloseIcon } from "@/icons";
+import { Device } from "@/store";
 
 type Props = Omit<Device, "id"> & {
   setOrderView: () => void;
